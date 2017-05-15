@@ -1,0 +1,19 @@
+.navbar{
+	background-color: #3E474F;
+}
+
+.toolbar{
+	background-color: #16a085;
+}
+
+.labelLink{
+	margin-right:1%;
+}
+
+.brand-link{
+	color:#fff;
+}
+
+.brand-link:hover{
+	color:#16a085;
+}

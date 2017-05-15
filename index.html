@@ -1,7 +1,84 @@
+<!DOCTYPE html>
 <html>
-<body>
-cela fonctionne
 
-<script src="upup.js" type="txt/javascript">
-</body>
+    <head>
+        <!-- Meta tags-->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        
+        <!-- App title-->
+        <title>Follow Your Money</title>
+
+        <!--  Framework7 iOS theme styles-->
+        <link rel="stylesheet" href="css/framework7.material.min.css">
+        <link rel="stylesheet" href="css/framework7.material.colors.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+        <!-- App styles-->
+        <link rel="stylesheet" href="css/app.css">
+    </head>
+
+    <body ng-app="app">
+
+        <!-- Views -->
+        <div class="views">
+
+            <!-- main view -->
+            <div class="view view-main">
+
+                <!-- Top Navbar-->
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <div class="center sliding">
+                            <a href="#" class='brand-link'>Follow Your Money</a>
+                        </div>
+                        <div class="right">
+                            <a href="#" class="link"><i class="material-icons">perm_identity</i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Page content -->
+                <div class="pages navbar-through toolbar-through">
+                    <div data-page="index" class="page">
+                        <!-- VIEW CONTENT -->
+                        <div class="page-content"  ui-view></div>
+                    </div>
+                </div>
+
+                <!-- Bottom Toolbar-->
+                <div class="toolbar">
+                    <div class="toolbar-inner">
+                        <!-- Toolbar links -->
+                        <a href="#/list" class="link"><i class="material-icons">list</i> <span class='labelLink'>List</span></a>
+                        <a href="#/new" class="link"><span class='labelLink'>New</span> <i class="material-icons">add_circle</i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SCRIPTS JS -->
+
+        <!-- jQuery -->
+        <script type="text/javascript" src="js/librairies/jquery.min.js"></script>
+        <!-- Angular JS -->
+        <script type="text/javascript" src="js/librairies/angular.min.js"></script>
+        <!-- Angular Ui-router -->
+        <script type="text/javascript" src="js/librairies/angular-ui-router.min.js"></script>
+        <!-- Framework7 Library JS -->
+        <script type="text/javascript" src="js/librairies/framework7.min.js"></script>
+        <!-- upup.js -->
+        <script type="text/javascript" src="js/librairies/upup.js"></script>
+        <!-- upup.js -->
+        <script type="text/javascript" src="js/librairies/upup.sw.js"></script>
+
+        <!-- Controllers -->
+        <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="js/controllers/auth.controller.js"></script>
+        <script type="text/javascript" src="js/controllers/home.controller.js"></script>
+        <script type="text/javascript" src="js/controllers/form.controller.js"></script>
+    
+    </body>
 </html>
