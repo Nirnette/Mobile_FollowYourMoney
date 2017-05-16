@@ -27,7 +27,7 @@ app.config(function($stateProvider,$urlRouterProvider){
 			controller: 'HomeCtrl',
 			controllerAs: 'home',
 			data: {
-		        requireLogin: false
+		        requireLogin: true
 		    }
 		})
 		.state('form',{
@@ -36,7 +36,7 @@ app.config(function($stateProvider,$urlRouterProvider){
 			controller: 'FormCtrl',
 			controllerAs: 'form',
 			data: {
-		        requireLogin: false
+		        requireLogin: true
 		    }
 		})
 
@@ -46,15 +46,17 @@ app.config(function($stateProvider,$urlRouterProvider){
 });
 
 //Gère l'accès aux pages en fonction de si le user est connecté et s'il a les droits pour voir la page
-app.run(function ($rootScope,$state) {
+app.run(function($rootScope,$state,UserFactory) {
 
   $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
+
+  	var userLogged = UserFactory.getUser();
 
   	//Récupération du booléan
     var requireLogin = toState.data.requireLogin;
 
-    //Test si le user a acces a la page ou non
-    if (requireLogin && ($rootScope.currentUser === null || $rootScope.currentUser === undefined)){
+    //Test si le user a acces a la page ou non et le redirige vers la page d'authentification si pas connecté
+    if (requireLogin && (userLogged == undefined || !userLogged.isLogged)){
     	event.preventDefault();
     	return $state.go('auth');
     }
