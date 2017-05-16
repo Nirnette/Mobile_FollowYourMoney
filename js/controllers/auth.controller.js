@@ -1,5 +1,5 @@
 /*********************** Controller de la page d'authentification ****************/
-app.controller('AuthCtrl', function($rootScope, LocalStorageFactory) {
+app.controller('AuthCtrl', function($rootScope, $scope, $state, LocalStorageFactory, UserFactory) {
 
     //Stockage du this
     var auth = this;
@@ -30,6 +30,18 @@ app.controller('AuthCtrl', function($rootScope, LocalStorageFactory) {
 
         //Update du localstorage
         LocalStorageFactory.setItem('followyourmoney', datas);
+
+        var userDatas = {
+            'isLogged' : true,
+            'avatar'   : profile.getImageUrl(),
+            'givename' : profile.getGivenName(),
+        };
+
+        UserFactory.setUser(userDatas);
+        $scope.user = UserFactory.getUser();
+    
+        //Redirection vers la home page
+        $state.go('home');
 
     };
 
