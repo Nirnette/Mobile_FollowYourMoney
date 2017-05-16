@@ -13,29 +13,19 @@
 				<div class="data-table">
 					<table>
 						<thead>
-						<tr>
-							<th class="label-cell sortable-cell sortable-active ">Date </th>
-							<th class="label-cell sortable-cell ">Name</th>
-							<th class="numeric-cell sortable-cell ">Montant </th>
-							<th class="label-cell sortable-cell ">Catégorie</th>
-							<!--<th class="numeric-cell  ">Actions </th>-->
-						</tr>
+							<tr>
+									<!--<th ng-repeat="(i,th) in home" ng-class="selectedCls(i)" ng-click="changeSorting(i)">{{th}}</th>-->
+								<th ng-repeat="(i,th) in home.head" class="label-cell sortable-cell sortable-active " ng-class="selectedCls(i)" ng-click="changeSorting(i)" >{{th}}</th>
+							</tr>
 						</thead>
 						<tbody>
-						<tr>
-							<td class="label-cell">10/05</td>
-							<td class="label-cell">Sortie Cinema</td>
-							<td class="numeric-cell">15€</td>
-							<td class="label-cell"><i class="icon f7-icons">cinema</i></td>
-							<!--<td class="actions-cell">-->
-								<!--<a class="link icon-only"><i class="icon f7-icons">compose</i></a>-->
-								<!--<a class="link icon-only"><i class="icon f7-icons">trash</i></a>-->
-							<!--</td>-->
-							<!--<td class="label-cell"><i class="icon f7-icons color-red">mic_fill</i></td>-->
-							<!--<td class="actions-cell">-->
-								<!--<a class="link icon-only"><i class="icon f7-icons">Suprimer</i></a>-->
-							<!--</td>-->
-						</tr>
+							<!--<tr ng:repeat="row in body.$orderBy(sort.column, sort.descending)">-->
+							<tr ng-repeat="row in home.body ">
+								<td>{{row.date}}</td>
+								<td>{{row.name}}</td>
+								<td>{{row.montant}}</td>
+								<td>{{row.categorie}}</td>
+							</tr>
 						</tbody>
 					</table>
 				</div>
