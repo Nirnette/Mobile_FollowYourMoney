@@ -4,25 +4,41 @@
 	<div class="page">
 		<div class="page-content">
 			<!--Listes des dépenses à insérer ici-->
-			<div class="data-table">
-				<table>
-					<thead>
-					<tr>
-						<th class="label-cell">Date</th>
-						<th class="numeric-cell">Lieu</th>
-						<th class="tablet-only">Catégorie</th>
-						<th class="numeric-cell">Montant </th>
-					</tr>
-					</thead>
-					<tbody>
-					<tr>
-						<td class="label-cell">10/05/2017</td>
-						<td class="numeric-cell">Paris</td>
-						<td class="tablet-only">Cinema</td>
-						<td class="tablet-only">15€</td>
-					</tr>
-					</tbody>
-				</table>
+			<div class="data-table data-table-init card">
+				<div class="data-table-title">Liste des depenses</div>
+				<!--<div class="data-table-actions">-->
+					<!--<a class="link icon-only"><i class="icon f7-icons">sort</i></a>-->
+					<!--<a class="link icon-only"><i class="icon f7-icons">more_vertical_round</i></a>-->
+				<!--</div>-->
+				<div class="data-table">
+					<table>
+						<thead>
+						<tr>
+							<th class="label-cell sortable-cell sortable-active ">Date </th>
+							<th class="label-cell sortable-cell ">Name</th>
+							<th class="numeric-cell sortable-cell ">Montant </th>
+							<th class="label-cell sortable-cell ">Catégorie</th>
+							<!--<th class="numeric-cell  ">Actions </th>-->
+						</tr>
+						</thead>
+						<tbody>
+						<tr>
+							<td class="label-cell">10/05</td>
+							<td class="label-cell">Sortie Cinema</td>
+							<td class="numeric-cell">15€</td>
+							<td class="label-cell"><i class="icon f7-icons">cinema</i></td>
+							<!--<td class="actions-cell">-->
+								<!--<a class="link icon-only"><i class="icon f7-icons">compose</i></a>-->
+								<!--<a class="link icon-only"><i class="icon f7-icons">trash</i></a>-->
+							<!--</td>-->
+							<!--<td class="label-cell"><i class="icon f7-icons color-red">mic_fill</i></td>-->
+							<!--<td class="actions-cell">-->
+								<!--<a class="link icon-only"><i class="icon f7-icons">Suprimer</i></a>-->
+							<!--</td>-->
+						</tr>
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>
