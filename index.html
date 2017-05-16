@@ -18,6 +18,11 @@
 
         <!-- App styles-->
         <link rel="stylesheet" href="css/app.css">
+    
+        <!-- Gmail Auth -->
+        <meta name="google-signin-scope" content="profile email">
+        <meta name="google-signin-client_id" content="445913378547-81eptei3akg63l5aumms2f82s78j5hbj.apps.googleusercontent.com">
+
     </head>
 
     <body ng-app="app">
@@ -36,6 +41,7 @@
                         </div>
                         <div class="right">
                             <a href="#" class="link"><i class="material-icons">perm_identity</i></a>
+                            
                         </div>
                     </div>
                 </div>
@@ -43,7 +49,6 @@
                 <!-- Page content -->
                 <div class="pages navbar-through toolbar-through">
                     <div data-page="index" class="page">
-                        <!-- VIEW CONTENT -->
                         <div class="page-content"  ui-view></div>
                     </div>
                 </div>
@@ -73,12 +78,31 @@
         <script type="text/javascript" src="js/librairies/upup.js"></script>
         <!-- upup.js -->
         <script type="text/javascript" src="js/librairies/upup.sw.js"></script>
+            
 
         <!-- Controllers -->
         <script type="text/javascript" src="js/app.js"></script>
         <script type="text/javascript" src="js/controllers/auth.controller.js"></script>
         <script type="text/javascript" src="js/controllers/home.controller.js"></script>
         <script type="text/javascript" src="js/controllers/form.controller.js"></script>
-    
+        
+        <!-- Services / Factories -->
+        <script type="text/javascript" src="js/factories/LocalStorageFactory.js"></script>
+
+        <script type="text/javascript">
+            UpUp.start({
+                'content-url': 'views/home.html',
+                'assets': ['js/librairies/jquery.min.js',
+                    'js/librairies/angular.min.js',
+                    'js/librairies/angular-ui-router.min.js',
+                    'js/librairies/framework7.min.js',
+                    'css/framework7.material.min.css',
+                    'css/framework7.material.colors.min.css',
+                    'js/factories/LocalStorageFactory.js',
+                    'js/app.js',
+                    'js/controllers/home.controller.js']
+            });
+        </script>
+
     </body>
 </html>
