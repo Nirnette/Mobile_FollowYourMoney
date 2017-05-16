@@ -4,6 +4,19 @@ app.controller('AuthCtrl', function($rootScope, $scope, $state, LocalStorageFact
     //Stockage du this
     var auth = this;
 
+    var datas = LocalStorageFactory.getItem('followyourmoney');
+    console.log(datas);
+    if(datas !== null && datas !== undefined && datas.userdata.idtoken.length > 0){
+        var userDatas = {
+            'isLogged' : true,
+            'avatar'   : datas.userdata.avatar,
+            'givename' : datas.userdata.givename,
+        };
+
+        UserFactory.setUser(userDatas);
+        $state.go('home');
+    }
+
     //Authentification GMAIL success
     function onSignIn(googleUser) {
 
@@ -15,17 +28,16 @@ app.controller('AuthCtrl', function($rootScope, $scope, $state, LocalStorageFact
 
         //Si rien défini dans le localstorage, on créé l'item avec l'utilisateur
         if (datas == null) {
-            datas = {};
-
-            datas[id_token] = {
+            datas = {
                 'userdata': {
-                    'fullname': profile.getGivenName(),
-                    'givename': profile.getGivenName(),
+                    'idtoken'   : id_token,
+                    'fullname'  : profile.getGivenName(),
+                    'givename'  : profile.getGivenName(),
                     'familyname': profile.getFamilyName(),
-                    'imgurl': profile.getImageUrl(),
+                    'imgurl'    : profile.getImageUrl(),
                 },
                 'datas': {}
-            }
+            };
         }
 
         //Update du localstorage
