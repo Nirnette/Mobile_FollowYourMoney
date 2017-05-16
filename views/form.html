@@ -4,14 +4,17 @@
 
 	 <div class="page">
 		<div class="page-content">
-			<div class="list-block">
+
+			<div class="content-block-title">Ajouter une depense</div>
+			<div class="list-block inset">
 				<ul>
-					...
+
 					<li>
 						<div class="item-content">
+							<!--<div class="item-media">... icon here ...</div>-->
 
 							<div class="item-inner">
-								<div class="item-title floating-label">Name</div>
+								<div class="item-title label">Name</div>
 								<div class="item-input">
 									<input type="text" name="name">
 								</div>
@@ -19,22 +22,41 @@
 						</div>
 					</li>
 					<li>
-						<div class="item-input">
+						<!--<a href="#" class="item-link smart-select">-->
+							<!--&lt;!&ndash; select &ndash;&gt;-->
+							<!--<select name="categorie">-->
+								<!--<option value="cinema" selected>Cinema</option>-->
+								<!--<option value="hotel">Hotel</option>-->
+								<!--<option value="theatre">Theatre</option>-->
+							<!--</select>-->
+							<!--<div class="item-content">-->
+								<!--<div class="item-inner">-->
+									<!--&lt;!&ndash; Select label &ndash;&gt;-->
+									<!--<div class="item-title">Categorie</div>-->
+									<!--&lt;!&ndash; Selected value, not required &ndash;&gt;-->
+									<!--<div class="item-after">Cinema</div>-->
+								<!--</div>-->
+							<!--</div>-->
+						<!--</a>-->
+
+						<div class="item-content">
 							<div class="item-inner">
-								<div class="item-title floating-label">Categorie</div>
+								<div class="item-title label">Categorie</div>
 								<div class="item-input">
-									<select>
+									<select name="categorie">
 											<option value="1">Cinema</option>
 											<option value="1">Course</option>
+											<option value="theatre">Theatre</option>
 									</select>
 								</div>
 							</div>
 						</div>
 					</li>
 					<li>
-						<div class="item-input">
+						<div class="item-content">
+							<!--<div class="item-media"><i class="icon f7-icons">calendar</i></div>-->
 							<div class="item-inner">
-								<div class="item-title floating-label">Date</div>
+								<div class="item-title label">Date</div>
 								<div class="item-input">
 									<input type="date">
 								</div>
@@ -42,9 +64,9 @@
 						</div>
 					</li>
 					<li>
-						<div class="item-input">
+						<div class="item-content">
 							<div class="item-inner">
-								<div class="item-title floating-label">Montant</div>
+								<div class="item-title label">Montant</div>
 								<div class="item-input">
 									<input type="text">
 								</div>
@@ -62,9 +84,9 @@
 						</div>
 					</li>
 					<li>
-						<div class="item-input">
+						<div class="item-content">
 							<div class="item-inner">
-								<div class="item-title floating-label">Ville</div>
+								<div class="item-title label">Ville</div>
 								<div class="item-input">
 									<input type="text">
 								</div>
@@ -72,9 +94,9 @@
 						</div>
 					</li>
 					<li>
-						<div class="item-input">
+						<div class="item-content">
 							<div class="item-inner">
-								<div class="item-title floating-label">Code Postal</div>
+								<div class="item-title label">Code Postal</div>
 								<div class="item-input">
 									<input type="text">
 								</div>
@@ -82,7 +104,13 @@
 						</div>
 					</li>
 				</ul>
+				<p class="buttons-row">
+					<a href="#" class="button button-raised button-fill color-red">Annuler</a>
+					<a href="#" class="button button-raised button-fill color-green">Enregister</a>
+					<!--<a href="#" class="button button-raised button-fill color-blue">Blue</a>-->
+				</p>
 			</div>
+
 		</div>
 	</div>
 
