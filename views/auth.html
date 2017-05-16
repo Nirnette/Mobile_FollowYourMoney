@@ -1,16 +1,19 @@
 <!-- ********************** AUTH PAGE ************************-->
 <div ng-controller="AuthCtrl as auth">
-	
+    
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
 	<div class="page">
-		<!-- page-content has additional login-screen content -->
+
 		<div class="page-content login-screen-content">
+
 			<div class="login-screen-title">Follow Your Money Authentification</div>
 			
 			<div class="row">
 				<div class="col-15"></div>
 				<div class="col-70">
-					 <p>Please authenticate in order to use the app :</p>
-					<a href="#" class="button button-big button-fill color-red ">Connect With Google</a>
+					<p>Please authenticate in order to use the app :</p>
+					<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
 				</div>
 				<div class="col-15"></div>
 			</div>     
