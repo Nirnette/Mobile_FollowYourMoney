@@ -3,25 +3,25 @@
 app.factory('LocalStorageFactory', function($state){
 
 	//Save les datas dans le localstorage
-	var setItem = function(datas){
-		this.razLocalStorage();
-		localStorage.setItem('followyourmoney', JSON.stringify(datas));
+	var setItem = function(itemName,datas){
+		this.clear();
+		localStorage.setItem(itemName, JSON.stringify(datas));
 	}
 
 	//Get localstorage datas
-	var getItem = function(){
-		return JSON.parse(localStorage.getItem('followyourmoney'));
+	var getItem = function(itemName){
+		return JSON.parse(localStorage.getItem(itemName));
 	}
 
 	//Raz le localstorage
-	var clearLocalStorage = function(){
+	var clear = function(){
 		localStorage.clear(); 
 	}
 
 	return{
 		setItem : setItem,
 		getItem : getItem,
-		clearLocalStorage : clearLocalStorage
+		clear : clear
 	}
 
 });
