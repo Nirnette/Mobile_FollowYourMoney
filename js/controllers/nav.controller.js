@@ -11,7 +11,6 @@ app.controller('NavCtrl', function($scope,UserFactory) {
         }
         else{
             $scope.$apply()
-            console.log($scope.user);
             clearInterval(intrv);
         }
     },300);

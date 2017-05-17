@@ -30,3 +30,15 @@
     max-width: 30px; 
     max-height: 30px;
 }
+
+input, textarea, select{
+	background-color: #ecf0f1 !important;
+}
+
+.error{
+	border-bottom:1px solid red !important;
+}
+
+.error-label{
+	color:red !important;
+}
