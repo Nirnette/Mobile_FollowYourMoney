@@ -10,7 +10,7 @@ app.factory('NotificationFactory', function($state){
             var date = new Date();
             var hours = date.getHours();
             if (hours == hour){
-                function notifyMe() {
+                // function notifyMe() {
                     // Voyons si le navigateur supporte les notifications
                     if (!("Notification" in window)) {
                         return false;
@@ -44,10 +44,10 @@ app.factory('NotificationFactory', function($state){
                         });
                     }
 
-                    // Comme ça, si l'utlisateur a refusé toute notification, et que vous respectez ce choix,
+                    // Comme ça, si l'utilisateur a refusé toute notification, et que vous respectez ce choix,
                     // il n'y a pas besoin de l'ennuyer à nouveau.
                 }
-            }
+            // }
         }, 3600000);
     };
 
