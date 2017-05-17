@@ -42,3 +42,12 @@ input, textarea, select{
 .error-label{
 	color:red !important;
 }
+
+.modalLink{
+	color:#167f6a;
+	cursor:pointer;
+}
+
+.modalLink:hover{
+	color:#16a085;
+}

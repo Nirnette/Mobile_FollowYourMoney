@@ -47,7 +47,7 @@ app.controller('FormCtrl',function($http,$state,$scope,CategoriesService,LocalSt
 
 				var storagedDatas2 = LocalStorageFactory.getItem('followyourmoney');
 
-				myApp.alert('Expense added !');
+				myApp.alert('Expense added !',"Success");
 
 				$state.go('home');
 			}

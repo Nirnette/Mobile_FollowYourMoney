@@ -3,14 +3,15 @@
 app.controller('HomeCtrl',function($scope, CategoriesService, NotificationFactory, UserFactory, LocalStorageFactory){
 
 	//Stockage du this
-	var home = this;
+	var home  = this;
+	var myApp = new Framework7();
 
-    home.head ={
+    home.head = {
 		date      : "Date",
 		name      : "Expense",
 		montant   : "Cost",
-		/*categorie : "Categorie"*/
 	};
+
 
 	$scope.user 		= UserFactory.getUser();
 	$scope.categories   = CategoriesService.categories;
@@ -18,12 +19,28 @@ app.controller('HomeCtrl',function($scope, CategoriesService, NotificationFactor
 
 	var storagedDatas = LocalStorageFactory.getItem('followyourmoney');
 	home.body = storagedDatas.datas;
-	console.log("body : ",home.body);
 
     home.sort = {
         column: 'date',
         descending: true
     };
+
+	home.showModal = function(index){
+
+		var expense = home.body[index];
+		console.log(expense);
+
+		if(expense !== undefined){
+			var html =  "<b>Cost</b> : "+expense.cost+' €<br>';
+			html += "<b>Done at</b> : "+expense.location+'<br>';
+			html += "<b>On</b> : "+expense.date+'<br>';
+			html += "<b>Category</b> : "+expense.category+'<br>';
+
+			if(expense.comment.length > 0)
+				html += "<b>Comment</b> : "+expense.comment;
+		}
+		myApp.alert(html,expense.name);
+	};
 
     $scope.selectedProp = 'date';/* utilise pour le trie*/
     $scope.isReversed = true; /* utilise pour le trie*/
