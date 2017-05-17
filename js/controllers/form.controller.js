@@ -91,4 +91,3 @@ app.controller('FormCtrl',function($http,$state,$scope,CategoriesService,LocalSt
 	}
 	
 });
-
