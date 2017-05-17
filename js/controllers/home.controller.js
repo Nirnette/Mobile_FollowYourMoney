@@ -6,13 +6,15 @@ app.controller('HomeCtrl',function($scope, CategoriesService, NotificationFactor
 	var home = this;
 
     home.head ={
-			date:"Date",
-			name: "Titre",
-			montant: "Montant",
-			categorie: "Categorie"
-		};
+		date      :"Date",
+		name      : "Titre",
+		montant   : "Montant",
+		categorie : "Categorie"
+	};
 
-	$scope.user = UserFactory.getUser();
+	$scope.user 		= UserFactory.getUser();
+	$scope.categories   = CategoriesService.categories;
+
 
 	home.body =[{
 			date: "10/05",
@@ -25,13 +27,13 @@ app.controller('HomeCtrl',function($scope, CategoriesService, NotificationFactor
 			montant: "10",
 			categorie: "Sorties"
 		},
-			{
-				date: "09/05",
-				name: "Parque Asterix",
-				montant: "55",
-				categorie: "Vacances"
-			}
-		];
+		{
+			date: "09/05",
+			name: "Parque Asterix",
+			montant: "55",
+			categorie: "Vacances"
+		}
+	];
 
     home.sort = {
         column: 'name',
@@ -45,8 +47,6 @@ app.controller('HomeCtrl',function($scope, CategoriesService, NotificationFactor
         $scope.selectedProp = prop;
         $scope.isReversed = !$scope.isReversed;
     };
-
-    $scope.categories = CategoriesService.categories;
 
     $scope.customFilter = function(element) {
 
@@ -64,4 +64,4 @@ app.controller('HomeCtrl',function($scope, CategoriesService, NotificationFactor
             return true;
         }
     };
-})
+});
