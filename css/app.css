@@ -22,10 +22,10 @@
 
 /*td { padding: 0.2em 1em; }*/
 /*th { text-align: center; }*/
-/*thead {*/
-	/*border-bottom: 2px solid black;*/
-	/*cursor: pointer;*/
-/*}*/
+thead {
+	border-bottom: 2px solid black;
+	cursor: pointer;
+}
 
 /* http://www.greywyvern.com/code/php/binary2base64 */
 

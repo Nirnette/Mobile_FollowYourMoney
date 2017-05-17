@@ -1,6 +1,6 @@
 /*********************** Controller de la home page ****************/
 
-app.controller('HomeCtrl',function($rootScope){
+app.controller('HomeCtrl',function($scope, categories){
 
 	//Stockage du this
 	var home = this;
@@ -16,37 +16,50 @@ app.controller('HomeCtrl',function($rootScope){
 			date: "10/05",
 			name: "Cinema Star Trek",
 			montant: "15",
-			categorie: "cinema"
+			categorie: "Shopping"
 		},{
 			date: "08/05",
 			name: "Theatre La luciernaga",
 			montant: "10",
-			categorie: "Theatre"
+			categorie: "Sorties"
 		},
 			{
 				date: "09/05",
 				name: "Parque Asterix",
 				montant: "55",
-				categorie: "Parque"
+				categorie: "Vacances"
 			}
 		];
 
     home.sort = {
-        column: 'montant',
+        column: 'name',
         descending: false
     };
 
-    home.selectedCls = function(column) {
-        return column == home.sort.column && 'sort-' + home.sort.descending;
+    $scope.selectedProp = 'date';/* utilise pour le trie*/
+    $scope.isReversed = true; /* utilise pour le trie*/
+
+    $scope.changeOrder = function(prop) {
+        $scope.selectedProp = prop;
+        $scope.isReversed = !$scope.isReversed;
     };
 
-    home.changeSorting = function(column) {
-        var sort = home.sort;
-        if (sort.column == column) {
-            sort.descending = !sort.descending;
+    $scope.categories = categories.categories;
+
+    $scope.customFilter = function(element) {
+
+        var val = ($scope.modelCategory)?$scope.modelCategory : 'all';/*il vient du select*/
+        console.log(val);
+        if (val != "all") {
+        	var cat = element.categorie;
+        	if(val == cat){
+				return true;
+			}else{
+                return false;
+			}
+
         } else {
-            sort.column = column;
-            sort.descending = false;
+            return true;
         }
- };
+    };
 })
