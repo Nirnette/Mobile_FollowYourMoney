@@ -1,117 +1,85 @@
 <!-- ********************** FORM PAGE ************************-->
-<div ng-controller="FormCtrl as form">
- 
-
+<div>
 	 <div class="page">
 		<div class="page-content">
 
-			<div class="content-block-title">Ajouter une depense</div>
+			<div class="content-block-title">New Expense</div>
 			<div class="list-block inset">
-				<ul>
-
-					<li>
-						<div class="item-content">
-							<!--<div class="item-media">... icon here ...</div>-->
-
-							<div class="item-inner">
-								<div class="item-title label">Name</div>
-								<div class="item-input">
-									<input type="text" name="name">
+				<form novalidate ng-submit="form.submit()">
+					<ul>
+						<li>
+							<div class="item-content">
+								<div class="item-inner">
+									<div class="item-title label " id="name_label">Name</div>
+									<div class="item-input">
+										<input type="text" name="name" id="name" ng-model="form.name" required>
+									</div>
 								</div>
 							</div>
-						</div>
-					</li>
-					<li>
-						<!--<a href="#" class="item-link smart-select">-->
-							<!--&lt;!&ndash; select &ndash;&gt;-->
-							<!--<select name="categorie">-->
-								<!--<option value="cinema" selected>Cinema</option>-->
-								<!--<option value="hotel">Hotel</option>-->
-								<!--<option value="theatre">Theatre</option>-->
-							<!--</select>-->
-							<!--<div class="item-content">-->
-								<!--<div class="item-inner">-->
-									<!--&lt;!&ndash; Select label &ndash;&gt;-->
-									<!--<div class="item-title">Categorie</div>-->
-									<!--&lt;!&ndash; Selected value, not required &ndash;&gt;-->
-									<!--<div class="item-after">Cinema</div>-->
-								<!--</div>-->
-							<!--</div>-->
-						<!--</a>-->
-
-						<div class="item-content">
-							<div class="item-inner">
-								<div class="item-title label">Categorie</div>
-								<div class="item-input">
-									<select name="categorie">
-											<option value="1">Restauration</option>
-											<option value="1">Courses</option>
-											<option value="theatre">Vacances</option>
-									</select>
+						</li>
+						<li>
+							<div class="item-content">
+								<div class="item-inner">
+									<div class="item-title label" id="category_label" >Category</div>
+									<div class="item-input">
+										<select name="category" ng-model="form.category" id="category" required>
+											<option value=""></option>
+											<option ng-repeat="cat in form.categories"
+										            value="{{cat}}">
+										      {{cat}}
+										    </option>
+										</select>
+									</div>
 								</div>
 							</div>
-						</div>
-					</li>
-					<li>
-						<div class="item-content">
-							<!--<div class="item-media"><i class="icon f7-icons">calendar</i></div>-->
-							<div class="item-inner">
-								<div class="item-title label">Date</div>
-								<div class="item-input">
-									<input type="date">
+						</li>
+						<li>
+							<div class="item-content">
+								<div class="item-inner">
+									<div class="item-title label" id="date_label">Date</div>
+									<div class="item-input">
+										<input type="date" ng-model="form.date" ng-init="form.date | date:'MM/dd/yyyy'" id="date" required>
+									</div>
 								</div>
 							</div>
-						</div>
-					</li>
-					<li>
-						<div class="item-content">
-							<div class="item-inner">
-								<div class="item-title label">Montant</div>
-								<div class="item-input">
-									<input type="text">
+						</li>
+						<li>
+							<div class="item-content">
+								<div class="item-inner">
+									<div class="item-title label" id="cost_label">Cost</div>
+									<div class="item-input">
+										<input type="number" name="cost" ng-model="form.cost" step="0.01" min="0.01" id="cost" required>
+									</div>
 								</div>
 							</div>
-						</div>
-					</li>
-					<li class="align-top">
-						<div class="item-content">
-							<div class="item-inner">
-								<div class="item-title label">Commentaire</div>
-								<div class="item-input">
-									<textarea></textarea>
+						</li>
+						<li>
+							<div class="item-content">
+								<div class="item-inner">
+									<div class="item-title label" id="location_label">Location</div>
+									<div class="item-input">
+										<input type="text" name="location" ng-model="form.location" id="location">
+									</div>
 								</div>
 							</div>
-						</div>
-					</li>
-					<li>
-						<div class="item-content">
-							<div class="item-inner">
-								<div class="item-title label">Ville</div>
-								<div class="item-input">
-									<input type="text">
+						</li>
+						<li class="align-top">
+							<div class="item-content">
+								<div class="item-inner">
+									<div class="item-title label" id="comment_label">Comment</div>
+									<div class="item-input">
+										<textarea name="comment" ng-model="form.comment" id="comment"></textarea>
+									</div>
 								</div>
 							</div>
-						</div>
-					</li>
-					<li>
-						<div class="item-content">
-							<div class="item-inner">
-								<div class="item-title label">Code Postal</div>
-								<div class="item-input">
-									<input type="text">
-								</div>
-							</div>
-						</div>
-					</li>
-				</ul>
-				<p class="buttons-row">
-					<a href="#" class="button button-raised button-fill color-red">Annuler</a>
-					<a href="#" class="button button-raised button-fill color-green">Enregister</a>
-					<!--<a href="#" class="button button-raised button-fill color-blue">Blue</a>-->
-				</p>
+						</li>
+					</ul>
+					<div class="buttons-row">
+						<button type="submit" ng-submit="" class="button button-raised button-fill color-blue">Save</button>
+					</div>			
+				</form>
 			</div>
 
 		</div>
 	</div>
-
 </div>

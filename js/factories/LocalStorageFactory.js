@@ -2,9 +2,14 @@
 /************** LOCALSTORAGE FACTORY ********************/
 app.factory('LocalStorageFactory', function($state){
 
+	//Raz l'item du localstorage
+	var removeItem = function(itemName){
+		localStorage.removeItem(itemName); 
+	}
+
 	//Save les datas dans le localstorage
 	var setItem = function(itemName,datas){
-		this.clear();
+		localStorage.removeItem(itemName);
 		localStorage.setItem(itemName, JSON.stringify(datas));
 	}
 
@@ -13,15 +18,11 @@ app.factory('LocalStorageFactory', function($state){
 		return JSON.parse(localStorage.getItem(itemName));
 	}
 
-	//Raz le localstorage
-	var clear = function(){
-		localStorage.clear(); 
-	}
 
 	return{
 		setItem : setItem,
 		getItem : getItem,
-		clear : clear
+		removeItem : removeItem
 	}
 
 });

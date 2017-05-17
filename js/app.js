@@ -51,7 +51,7 @@ app.run(function($rootScope,$state,UserFactory) {
   $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
 
   	var userLogged = UserFactory.getUser();
-
+  	/*console.log("user logged : ",userLogged);*/
   	//Récupération du booléan
     var requireLogin = toState.data.requireLogin;
 

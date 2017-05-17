@@ -1,19 +1,19 @@
 /*********************** Controller de la home page ****************/
 
-app.controller('HomeCtrl',function($scope, $rootScope, categories, NotificationFactory, UserFactory){
+app.controller('HomeCtrl',function($scope, CategoriesService, NotificationFactory, UserFactory){
+
 	//Stockage du this
 	var home = this;
 
-
     home.head ={
-			date:"Date",
-			name: "Titre",
-			montant: "Montant",
-			categorie: "Categorie"
-		};
+		date      :"Date",
+		name      : "Titre",
+		montant   : "Montant",
+		categorie : "Categorie"
+	};
 
-	$scope.user = UserFactory.getUser();
-
+	$scope.user 		= UserFactory.getUser();
+	$scope.categories   = CategoriesService.categories;
 
 
 	home.body =[{
@@ -27,13 +27,13 @@ app.controller('HomeCtrl',function($scope, $rootScope, categories, NotificationF
 			montant: "10",
 			categorie: "Sorties"
 		},
-			{
-				date: "09/05",
-				name: "Parque Asterix",
-				montant: "55",
-				categorie: "Vacances"
-			}
-		];
+		{
+			date: "09/05",
+			name: "Parque Asterix",
+			montant: "55",
+			categorie: "Vacances"
+		}
+	];
 
     home.sort = {
         column: 'name',
@@ -48,12 +48,10 @@ app.controller('HomeCtrl',function($scope, $rootScope, categories, NotificationF
         $scope.isReversed = !$scope.isReversed;
     };
 
-    $scope.categories = categories.categories;
-
     $scope.customFilter = function(element) {
 
         var val = ($scope.modelCategory)?$scope.modelCategory : 'all';/*il vient du select*/
-        console.log(val);
+      
         if (val != "all") {
         	var cat = element.categorie;
         	if(val == cat){

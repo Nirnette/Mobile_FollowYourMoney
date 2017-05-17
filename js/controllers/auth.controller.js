@@ -5,8 +5,9 @@ app.controller('AuthCtrl', function($rootScope, $scope, $state, LocalStorageFact
     var auth = this;
 
     var datas = LocalStorageFactory.getItem('followyourmoney');
-    console.log(datas);
+
     if(datas !== null && datas !== undefined && datas.userdata.idtoken.length > 0){
+
         var userDatas = {
             'isLogged' : true,
             'avatar'   : datas.userdata.avatar,
@@ -34,9 +35,9 @@ app.controller('AuthCtrl', function($rootScope, $scope, $state, LocalStorageFact
                     'fullname'  : profile.getGivenName(),
                     'givename'  : profile.getGivenName(),
                     'familyname': profile.getFamilyName(),
-                    'imgurl'    : profile.getImageUrl(),
+                    'avatar'    : profile.getImageUrl(),
                 },
-                'datas': {}
+                'datas': []
             };
         }
 
