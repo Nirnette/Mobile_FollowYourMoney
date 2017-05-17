@@ -37,3 +37,16 @@ thead {
 }
 
 
+.right{
+	margin-right:0.6%;
+}
+
+.avatar{
+	vertical-align:middle;
+	border:1px solid #E7E7E7;
+	height: auto; 
+    width: auto; 
+    max-width: 30px; 
+    max-height: 30px;
+}
+

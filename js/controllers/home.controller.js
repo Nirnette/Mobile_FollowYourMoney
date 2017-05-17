@@ -1,9 +1,9 @@
 /*********************** Controller de la home page ****************/
 
-app.controller('HomeCtrl',function($scope, categories){
-
+app.controller('HomeCtrl',function($scope, $rootScope, categories, NotificationFactory, UserFactory){
 	//Stockage du this
 	var home = this;
+
 
     home.head ={
 			date:"Date",
@@ -11,6 +11,11 @@ app.controller('HomeCtrl',function($scope, categories){
 			montant: "Montant",
 			categorie: "Categorie"
 		};
+
+	$scope.user = UserFactory.getUser();
+
+});
+
 
 	home.body =[{
 			date: "10/05",

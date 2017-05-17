@@ -1,0 +1,15 @@
+{
+  "short_name": "Follow ur money",
+  "name": "Follow Your Money",
+  "icons": [
+    {
+      "src":"icon.png",
+      "sizes": "225x225",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "https://followyourmoney-54e5b.firebaseapp.com/#/list",
+  "background_color": "#000",
+  "theme_color": "#FFFFFF",
+  "display": "standalone"
+}
