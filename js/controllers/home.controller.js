@@ -7,13 +7,14 @@ app.controller('HomeCtrl',function($scope, CategoriesService, NotificationFactor
 
     home.head ={
 		date      : "Date",
-		name      : "Titre",
-		montant   : "Montant",
-		categorie : "Categorie"
+		name      : "Expense",
+		montant   : "Cost",
+		/*categorie : "Categorie"*/
 	};
 
 	$scope.user 		= UserFactory.getUser();
 	$scope.categories   = CategoriesService.categories;
+	$scope.catIcons     = CategoriesService.icons;
 
 	var storagedDatas = LocalStorageFactory.getItem('followyourmoney');
 	home.body = storagedDatas.datas;
