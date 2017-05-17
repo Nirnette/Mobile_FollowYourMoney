@@ -14,7 +14,6 @@ app.controller('HomeCtrl',function($scope, $rootScope, categories, NotificationF
 
 	$scope.user = UserFactory.getUser();
 
-});
 
 
 	home.body =[{
@@ -67,4 +66,4 @@ app.controller('HomeCtrl',function($scope, $rootScope, categories, NotificationF
             return true;
         }
     };
-})
+});
