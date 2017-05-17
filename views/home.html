@@ -4,38 +4,41 @@
 	<div class="page">
 		<div class="page-content">
 			<!--Listes des dépenses à insérer ici-->
+
+			<div class="row">
+				<div class="col-15"></div>
+
+				<div class="col-70">
+					<!---->
+					<p>Filtre par Categories :
+						<select name="category" ng-model="modelCategory" >
+							<option value="all"></option>
+							<option ng-repeat="categorie in categories" value="{{categorie}}" >{{categorie}}</option>
+						</select>
+					</p>
+				</div>
+				<div class="col-15"></div>
+			</div>
+
+
 			<div class="data-table data-table-init card">
 				<div class="data-table-title">Liste des depenses</div>
-				<!--<div class="data-table-actions">-->
-					<!--<a class="link icon-only"><i class="icon f7-icons">sort</i></a>-->
-					<!--<a class="link icon-only"><i class="icon f7-icons">more_vertical_round</i></a>-->
-				<!--</div>-->
 				<div class="data-table">
 					<table>
 						<thead>
-						<tr>
-							<th class="label-cell sortable-cell sortable-active ">Date </th>
-							<th class="label-cell sortable-cell ">Name</th>
-							<th class="numeric-cell sortable-cell ">Montant </th>
-							<th class="label-cell sortable-cell ">Catégorie</th>
-							<!--<th class="numeric-cell  ">Actions </th>-->
-						</tr>
+							<tr>
+								<!--<th ng-repeat="(i,th) in home" ng-class="selectedCls(i)" ng-click="changeSorting(i)">{{th}}</th>-->
+								<th ng-repeat="(i,th) in home.head " class="label-cell sortable-cell sortable-active " ng-click="changeOrder('home.head')" >{{th}}</th>
+							</tr>
 						</thead>
 						<tbody>
-						<tr>
-							<td class="label-cell">10/05</td>
-							<td class="label-cell">Sortie Cinema</td>
-							<td class="numeric-cell">15€</td>
-							<td class="label-cell"><i class="icon f7-icons">cinema</i></td>
-							<!--<td class="actions-cell">-->
-								<!--<a class="link icon-only"><i class="icon f7-icons">compose</i></a>-->
-								<!--<a class="link icon-only"><i class="icon f7-icons">trash</i></a>-->
-							<!--</td>-->
-							<!--<td class="label-cell"><i class="icon f7-icons color-red">mic_fill</i></td>-->
-							<!--<td class="actions-cell">-->
-								<!--<a class="link icon-only"><i class="icon f7-icons">Suprimer</i></a>-->
-							<!--</td>-->
-						</tr>
+							<!--<tr ng:repeat="row in body.$orderBy(sort.column, sort.descending)">-->
+							<tr ng-repeat="row in filtreCategorie = (home.body | filter:customFilter )">
+								<td>{{row.date}}</td>
+								<td>{{row.name}}</td>
+								<td>{{row.montant}}</td>
+								<td>{{row.categorie}}</td>
+							</tr>
 						</tbody>
 					</table>
 				</div>
