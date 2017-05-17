@@ -18,6 +18,8 @@
 
         <!-- App styles-->
         <link rel="stylesheet" href="css/app.css">
+        <!-- Manifest -->
+        <link rel="manifest" href="/manifest.json">
     
         <!-- Gmail Auth -->
         <meta name="google-signin-scope" content="profile email">
@@ -34,14 +36,19 @@
             <div class="view view-main">
 
                 <!-- Top Navbar-->
-                <div class="navbar">
+                <div class="navbar" ng-controller="NavCtrl as nav">
                     <div class="navbar-inner">
                         <div class="center sliding">
                             <a href="#" class='brand-link'>Follow Your Money</a>
                         </div>
                         <div class="right">
-                            <a href="#" class="link"><i class="material-icons">perm_identity</i></a>
-                            
+                            <div ng-if="user == undefined">
+                                <i class="material-icons">perm_identity</i>
+                            </div>
+                            <div ng-if="user !== undefined && user.avatar.length > 0" class='avatarBlock'>
+                                 <img ng-src="{{user.avatar}}" class='avatar'>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -77,23 +84,28 @@
         <!-- upup.js -->
         <script type="text/javascript" src="upup.sw.js"></script>
         <!-- upup.js -->
-        <script type="text/javascript" src="upup.js"></script>
-
-            
+        <script type="text/javascript" src="upup.js"></script>          
 
         <!-- Controllers -->
         <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="js/controllers/nav.controller.js"></script>
         <script type="text/javascript" src="js/controllers/auth.controller.js"></script>
         <script type="text/javascript" src="js/controllers/home.controller.js"></script>
         <script type="text/javascript" src="js/controllers/form.controller.js"></script>
         
         <!-- Services / Factories -->
+        <script type="text/javascript" src="js/factories/LocalizationFactory.js"></script>
         <script type="text/javascript" src="js/factories/LocalStorageFactory.js"></script>
+        <script type="text/javascript" src="js/factories/NotificationFactory.js"></script>
+
+        <script type="text/javascript" src="js/factories/UserFactory.js"></script>
+
 
         <!--<script type="text/javascript" src="js/librairies/upup.min.js"></script>-->
         <!--<script type="text/javascript" src="js/librairies/upup.sw.min.js"></script>-->
         <script>
             UpUp.start({
+
                 'content-url': 'index.html',
                 'assets': ['/js/librairies/jquery.min.js',
                     '/js/librairies/angular.min.js',
@@ -109,6 +121,17 @@
                     '/views/form.html'
                 ]
             });
+        </script>
+        <script>
+            if ('serviceWorker' in navigator) {
+                console.log("Will the service worker register?");
+                navigator.serviceWorker.register('service-worker.js')
+                    .then(function(reg){
+                        console.log("Yes, it did.");
+                    }).catch(function(err) {
+                    console.log("No it didn't. This happened: ", err)
+                });
+            }
         </script>
 
     </body>
