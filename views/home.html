@@ -9,8 +9,7 @@
 				<div class="col-15"></div>
 
 				<div class="col-70">
-					<!---->
-					<p>Filtre par Categories :
+					<p>Filter by Categories :
 						<select name="category" ng-model="modelCategory" >
 							<option value="all"></option>
 							<option ng-repeat="categorie in categories" value="{{categorie}}" >{{categorie}}</option>
@@ -20,24 +19,26 @@
 				<div class="col-15"></div>
 			</div>
 
-
 			<div class="data-table data-table-init card">
-				<div class="data-table-title">Liste des depenses</div>
+				<div class="data-table-title">Expenses List</div>
 				<div class="data-table">
 					<table>
 						<thead>
 							<tr>
-								<!--<th ng-repeat="(i,th) in home" ng-class="selectedCls(i)" ng-click="changeSorting(i)">{{th}}</th>-->
-								<th ng-repeat="(i,th) in home.head " class="label-cell sortable-cell sortable-active " ng-click="changeOrder('home.head')" >{{th}}</th>
+								<th 
+									ng-repeat="(i,th) in home.head " 
+									class="label-cell sortable-cell sortable-active " 
+									ng-click="changeOrder('home.head')" >
+									{{th}}
+								</th>
 							</tr>
 						</thead>
 						<tbody>
-							<!--<tr ng:repeat="row in body.$orderBy(sort.column, sort.descending)">-->
 							<tr ng-repeat="row in filtreCategorie = (home.body | filter:customFilter )">
-								<td>{{row.date}}</td>
+								<td>{{row.date | date:'dd/MM/yyyy'}}</td>
 								<td>{{row.name}}</td>
-								<td>{{row.montant}}</td>
-								<td>{{row.categorie}}</td>
+								<td>{{row.cost}} €</td>
+								<td>{{row.category}}</td>
 							</tr>
 						</tbody>
 					</table>

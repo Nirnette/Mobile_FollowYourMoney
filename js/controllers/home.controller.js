@@ -1,12 +1,12 @@
 /*********************** Controller de la home page ****************/
 
-app.controller('HomeCtrl',function($scope, CategoriesService, NotificationFactory, UserFactory){
+app.controller('HomeCtrl',function($scope, CategoriesService, NotificationFactory, UserFactory, LocalStorageFactory){
 
 	//Stockage du this
 	var home = this;
 
     home.head ={
-		date      :"Date",
+		date      : "Date",
 		name      : "Titre",
 		montant   : "Montant",
 		categorie : "Categorie"
@@ -15,29 +15,13 @@ app.controller('HomeCtrl',function($scope, CategoriesService, NotificationFactor
 	$scope.user 		= UserFactory.getUser();
 	$scope.categories   = CategoriesService.categories;
 
-
-	home.body =[{
-			date: "10/05",
-			name: "Cinema Star Trek",
-			montant: "15",
-			categorie: "Shopping"
-		},{
-			date: "08/05",
-			name: "Theatre La luciernaga",
-			montant: "10",
-			categorie: "Sorties"
-		},
-		{
-			date: "09/05",
-			name: "Parque Asterix",
-			montant: "55",
-			categorie: "Vacances"
-		}
-	];
+	var storagedDatas = LocalStorageFactory.getItem('followyourmoney');
+	home.body = storagedDatas.datas;
+	console.log("body : ",home.body);
 
     home.sort = {
-        column: 'name',
-        descending: false
+        column: 'date',
+        descending: true
     };
 
     $scope.selectedProp = 'date';/* utilise pour le trie*/

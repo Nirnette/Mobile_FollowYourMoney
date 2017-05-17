@@ -6,7 +6,6 @@ app.controller('FormCtrl',function($http,$state,$scope,CategoriesService,LocalSt
 	var form = this;
 	var myApp = new Framework7();
 
-	var storagedDatas = LocalStorageFactory.getItem('followyourmoney');
 	form.categories = CategoriesService.categories;
 
 	form.name 	        = '';
