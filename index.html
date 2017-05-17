@@ -82,10 +82,9 @@
         <!-- Framework7 Library JS -->
         <script type="text/javascript" src="js/librairies/framework7.min.js"></script>
         <!-- upup.js -->
-        <script type="text/javascript" src="upup.js"></script>
-        <!-- upup.js -->
         <script type="text/javascript" src="upup.sw.js"></script>
-            
+        <!-- upup.js -->
+        <script type="text/javascript" src="upup.js"></script>          
 
         <!-- Controllers -->
         <script type="text/javascript" src="js/app.js"></script>
@@ -102,19 +101,24 @@
         <script type="text/javascript" src="js/factories/UserFactory.js"></script>
 
 
-        <script type="text/javascript">
+        <!--<script type="text/javascript" src="js/librairies/upup.min.js"></script>-->
+        <!--<script type="text/javascript" src="js/librairies/upup.sw.min.js"></script>-->
+        <script>
             UpUp.start({
-                'content-url': 'views/home.html',
-                'assets': [
-                    'js/librairies/jquery.min.js',
-                    'js/librairies/angular.min.js',
-                    'js/librairies/angular-ui-router.min.js',
-                    'js/librairies/framework7.min.js',
-                    'css/framework7.material.min.css',
-                    'css/framework7.material.colors.min.css',
-                    'js/factories/LocalStorageFactory.js',
-                    'js/app.js',
-                    'js/controllers/home.controller.js'
+
+                'content-url': 'index.html',
+                'assets': ['/js/librairies/jquery.min.js',
+                    '/js/librairies/angular.min.js',
+                    '/js/librairies/angular-ui-router.min.js',
+                    '/js/librairies/framework7.min.js',
+                    '/css/framework7.material.min.css',
+                    '/css/framework7.material.colors.min.css',
+                    '/js/factories/LocalStorageFactory.js',
+                    '/js/app.js',
+                    '/js/controllers/home.controller.js',
+                    '/views/home.html',
+                    '/views/auth.html',
+                    '/views/form.html'
                 ]
             });
         </script>
