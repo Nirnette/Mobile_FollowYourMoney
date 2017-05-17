@@ -11,4 +11,14 @@ app.service('CategoriesService', function(){
     	'Vehicle',
     	'Other'
     ];
+
+    this.icons = {
+    	'Grocery'      :'fa-shopping-cart',
+    	'Shopping'     :'fa-shopping-bag',
+    	'Restoration'  :'fa-cutlery',
+    	'Outings'      :'fa-users',
+    	'Holidays'     :'fa-plane',
+    	'Vehicle'      :'fa-car',
+    	'Other'        :'fa-list'
+    };
 });
