@@ -12,7 +12,6 @@ app.controller('HomeCtrl',function($scope, CategoriesService, NotificationFactor
 		montant   : "Cost",
 	};
 
-
 	$scope.user 		= UserFactory.getUser();
 	$scope.categories   = CategoriesService.categories;
 	$scope.catIcons     = CategoriesService.icons;
@@ -28,8 +27,7 @@ app.controller('HomeCtrl',function($scope, CategoriesService, NotificationFactor
 	home.showModal = function(index){
 
 		var expense = home.body[index];
-		console.log(expense);
-
+		
 		if(expense !== undefined){
 
 			var date = expense.date.split('-').reverse().join('/');
@@ -40,12 +38,29 @@ app.controller('HomeCtrl',function($scope, CategoriesService, NotificationFactor
 
 			if(expense.comment.length > 0)
 				html += "<b>Comment</b> : "+expense.comment;
+
+			html += '<div class="row">';
+  			html += '<div class="col-50">';
+    		html += '<a href="#" class="button button-big button-green color-blue">Edit</a>';
+  			html += '</div>';
+  			html += '<div class="col-50">'
+   			html += '<a href="#" class="button button-big button-red color-red">Delete</a>';
+  			html += '</div>';
+			html += '</div>';
 		}
 
 		var nameModal = '<i class="fa '+$scope.catIcons[expense.category]+'" aria-hidden="true"></i>  '+expense.name;
-		
+
 		myApp.alert(html,nameModal);
-	};1
+	};
+
+	home.editExpense = function(){
+
+	}
+
+	home.deleteExpense = function(){
+
+	}
 
     $scope.selectedProp = 'date';/* utilise pour le trie*/
     $scope.isReversed = true; /* utilise pour le trie*/
@@ -57,10 +72,10 @@ app.controller('HomeCtrl',function($scope, CategoriesService, NotificationFactor
 
     $scope.customFilter = function(element) {
 
-        var val = ($scope.modelCategory)?$scope.modelCategory : 'all';/*il vient du select*/
+        var val = ($scope.modelCategory) ? $scope.modelCategory : 'all';/*il vient du select*/
       
         if (val != "all") {
-        	var cat = element.categorie;
+        	var cat = element.category;
         	if(val == cat){
 				return true;
 			}else{
