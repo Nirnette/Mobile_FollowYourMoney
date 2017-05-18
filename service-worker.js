@@ -15,12 +15,12 @@
 
 
 
-self.addEventListener('notificationclick', function(event) {
-  console.log('[Service Worker] Notification click Received.');
-
-  event.notification.close();
-
-  event.waitUntil(
-    clients.openWindow('https://followyourmoney-54e5b.firebaseapp.com/#/list')
-  );
-});
+// self.addEventListener('notificationclick', function(event) {
+//   console.log('[Service Worker] Notification click Received.');
+//
+//   event.notification.close();
+//
+//   event.waitUntil(
+//     clients.openWindow('https://followyourmoney-54e5b.firebaseapp.com/#/list')
+//   );
+// });
