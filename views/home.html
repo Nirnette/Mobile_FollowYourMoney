@@ -3,14 +3,12 @@
 	
 	<div class="page">
 		<div class="page-content">
-			<!--Listes des dépenses à insérer ici-->
-
 			<div class="row">
 				<div class="col-15"></div>
 
 				<div class="col-70">
 					<p>Filter by Categories :
-						<select name="category" ng-model="modelCategory" >
+						<select name="categoryFilter" ng-model="modelCategory" >
 							<option value="all"></option>
 							<option ng-repeat="categorie in categories" value="{{categorie}}" >{{categorie}}</option>
 						</select>
@@ -34,9 +32,9 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr ng-repeat="row in filtreCategorie = (home.body | filter:customFilter ) track by $index">
+							<tr ng-repeat="row in filtreCategorie = (home.body | filter:customFilter)">
 								<td>{{row.date | date:'dd/MM'}}</td>
-								<td ng-click="home.showModal($index)" class="modalLink">
+								<td ng-click="home.showModal($event,row.id)" class="modalLink">
 									<i class="fa {{catIcons[row.category]}}" aria-hidden="true"></i> {{row.name}}
 								</td>
 								<td>{{row.cost}} €</td>
