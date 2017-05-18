@@ -45,7 +45,7 @@ app.controller('FormCtrl',function($http,$state, $stateParams,$scope,CategoriesS
 	form.submit = function(){
 
 		//Validations des datas
-		if(form.name.length > 0 && form.category.length > 0 && form.date !== undefined && form.cost > 0){
+		if(form.name!== undefined && form.category !== undefined && form.date !== undefined && form.cost !== undefined && form.cost > 0){
 
 			var month = form.date.getMonth()+1;
 			month = month < 10 ? '0'+month : month;
@@ -112,7 +112,7 @@ app.controller('FormCtrl',function($http,$state, $stateParams,$scope,CategoriesS
 			}
 		}else{
 
-			if(form.name.length == 0){
+			if(form.name== undefined || form.name.lenght == 0){
 				$('#name').addClass('error');
 				$('#name_label').addClass('error-label');
 			}else{
@@ -120,7 +120,7 @@ app.controller('FormCtrl',function($http,$state, $stateParams,$scope,CategoriesS
 				$('#name_label').removeClass('error-label');
 			}
 
-			if(form.category.length == 0){
+			if(form.category == undefined || form.category.length == 0){
 				$('#category').addClass('error');
 				$('#category_label').addClass('error-label');
 			}else{
@@ -128,7 +128,7 @@ app.controller('FormCtrl',function($http,$state, $stateParams,$scope,CategoriesS
 				$('#category_label').removeClass('error-label');
 			}
 
-			if(form.date == undefined){
+			if(form.date == undefined || form.date == undefined){
 				$('#date').addClass('error');
 				$('#date_label').addClass('error-label');
 			}else{
