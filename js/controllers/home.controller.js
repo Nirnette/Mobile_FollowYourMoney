@@ -27,8 +27,7 @@ app.controller('HomeCtrl',function($scope, CategoriesService, NotificationFactor
 	home.showModal = function(index){
 
 		var expense = home.body[index];
-		console.log(expense);
-
+		
 		if(expense !== undefined){
 
 			var date = expense.date.split('-').reverse().join('/');
