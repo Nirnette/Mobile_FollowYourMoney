@@ -31,7 +31,7 @@ app.config(function($stateProvider,$urlRouterProvider){
 		    }
 		})
 		.state('form',{
-			url: '/new/:id',
+			url: '/new',
 			templateUrl: 'views/form.html',
 			controller: 'FormCtrl',
 			controllerAs: 'form',
