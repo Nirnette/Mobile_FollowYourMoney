@@ -95,6 +95,7 @@ app.controller('HomeCtrl',function($state,$scope,CategoriesService, Notification
 
     $scope.changeOrder = function(prop) {
         $scope.selectedProp = prop.toLowerCase();
+        console.log($scope.isReversed);
         $scope.isReversed = !$scope.isReversed;
     };
 

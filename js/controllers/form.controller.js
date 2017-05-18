@@ -11,7 +11,22 @@ app.controller('FormCtrl',function($http,$state, $stateParams,$scope,CategoriesS
 
 	form.categories = CategoriesService.categories;
 
+	var dateEdit = null;
+
+	if(editDatas !== undefined){
+		var d = editDatas.date.split('-');
+		var dateEdit = new Date(d[0], d[1], d[2]);
+		console.log(dateEdit);
+	}
+
 	form.name 	        = editDatas !== undefined ? editDatas.name : '';
+	form.category       = editDatas !== undefined ? editDatas.category : '';
+	form.date           = editDatas !== undefined ? editDatas.date : new Date();
+	form.cost           = editDatas !== undefined ? editDatas.cost : '';
+	form.location       = editDatas !== undefined ? editDatas.location : '';
+	form.comment        = editDatas !== undefined ? editDatas.comment : '';
+
+	form.name 	        = '';
 	form.category       = '';
 	form.date           = new Date();
 	form.cost           = '';
