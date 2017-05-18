@@ -30,6 +30,7 @@ app.controller('FormCtrl',function($http,$state,$scope,CategoriesService,LocalSt
 			var date = form.date.getFullYear()+'-'+month+'-'+form.date.getDate();
 
 			var newExpense = {
+				id           : new Date().getTime(),
 				name         : form.name,
 				category     : form.category,
 				date 	     : date,

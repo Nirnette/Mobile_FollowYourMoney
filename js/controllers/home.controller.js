@@ -1,10 +1,12 @@
 /*********************** Controller de la home page ****************/
 
-app.controller('HomeCtrl',function($scope, CategoriesService, NotificationFactory, UserFactory, LocalStorageFactory){
+app.controller('HomeCtrl',function($scope,$compile,CategoriesService, NotificationFactory, UserFactory, LocalStorageFactory){
 
 	//Stockage du this
 	var home  = this;
-	var myApp = new Framework7();
+	var myApp = new Framework7({
+	  angular : true
+	});
 
     home.head = {
 		date      : "Date",
@@ -12,11 +14,13 @@ app.controller('HomeCtrl',function($scope, CategoriesService, NotificationFactor
 		montant   : "Cost",
 	};
 
-	$scope.user 		= UserFactory.getUser();
-	$scope.categories   = CategoriesService.categories;
-	$scope.catIcons     = CategoriesService.icons;
+	$scope.user 		   = UserFactory.getUser();
+	$scope.categories      = CategoriesService.categories;
+	$scope.catIcons        = CategoriesService.icons;
+	$scope.categoryFilter  = "";
 
 	var storagedDatas = LocalStorageFactory.getItem('followyourmoney');
+
 	home.body = storagedDatas.datas;
 
     home.sort = {
@@ -24,10 +28,20 @@ app.controller('HomeCtrl',function($scope, CategoriesService, NotificationFactor
         descending: true
     };
 
-	home.showModal = function(index){
+	home.showModal = function($event,id){
 
-		var expense = home.body[index];
-		
+		var expense = undefined;
+		var index   = undefined;
+
+		for(data in home.body){
+
+			if(home.body[data].id == id){
+				expense = home.body[data];
+				index = data;
+				break;
+			}
+		}
+
 		if(expense !== undefined){
 
 			var date = expense.date.split('-').reverse().join('/');
@@ -37,33 +51,48 @@ app.controller('HomeCtrl',function($scope, CategoriesService, NotificationFactor
 			html += "<b>Category</b> : "+expense.category+'<br>';
 
 			if(expense.comment.length > 0)
-				html += "<b>Comment</b> : "+expense.comment;
-
-			html += '<div class="row">';
-  			html += '<div class="col-50">';
-    		html += '<a href="#" class="button button-big button-green color-blue">Edit</a>';
-  			html += '</div>';
-  			html += '<div class="col-50">'
-   			html += '<a href="#" class="button button-big button-red color-red">Delete</a>';
-  			html += '</div>';
-			html += '</div>';
+				html += "<b>Comment</b> : "+expense.comment+'<br>';
 		}
 
 		var nameModal = '<i class="fa '+$scope.catIcons[expense.category]+'" aria-hidden="true"></i>  '+expense.name;
 
-		myApp.alert(html,nameModal);
+		myApp.modal({
+		    title:  nameModal,
+		    text: html,
+		    buttons: [
+			    {
+			        text: 'Delete',
+			        onClick: function() {
+			            myApp.confirm('Are you sure you want to delete the expense <b class="deleteLabel">'+expense.name+'</b> ?','Confirmation', function () {
+			            	if(index !== undefined){
+						    	storagedDatas.datas.splice(index,1);
+						    	LocalStorageFactory.setItem('followyourmoney',storagedDatas);
+						    	myApp.alert('The expense has been deleted with success', 'Success Delete !');
+						    	$event.currentTarget.parentElement.remove();
+			            	}else{
+			            		myApp.alert('Error while deleting', 'Error');
+			            	}
+
+					    });
+			        }
+			    },
+			    {
+			        text: 'Edit',
+			        onClick: function() {
+			          myApp.alert('You clicked second button!')
+			        }
+			    },
+			    {
+			        text: 'Close',
+			        bold: true,
+			    },
+		    ]
+		});
 	};
 
-	home.editExpense = function(){
 
-	}
-
-	home.deleteExpense = function(){
-
-	}
-
-    $scope.selectedProp = 'date';/* utilise pour le trie*/
-    $scope.isReversed = true; /* utilise pour le trie*/
+    $scope.selectedProp = 'date';
+    $scope.isReversed = true; 
 
     $scope.changeOrder = function(prop) {
         $scope.selectedProp = prop;
@@ -72,8 +101,8 @@ app.controller('HomeCtrl',function($scope, CategoriesService, NotificationFactor
 
     $scope.customFilter = function(element) {
 
-        var val = ($scope.modelCategory) ? $scope.modelCategory : 'all';/*il vient du select*/
-      
+        var val = ($scope.modelCategory) ? $scope.modelCategory : 'all';
+
         if (val != "all") {
         	var cat = element.category;
         	if(val == cat){
