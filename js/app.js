@@ -31,13 +31,14 @@ app.config(function($stateProvider,$urlRouterProvider){
 		    }
 		})
 		.state('form',{
-			url: '/new:expense',
+			url: '/new/:id',
 			templateUrl: 'views/form.html',
 			controller: 'FormCtrl',
 			controllerAs: 'form',
 			data: {
 		        requireLogin: true
-		    }
+		    },
+		    /*params: {id: null},*/
 		})
 
 	//Route par défaut si on tente de naviguer autre part que vers les états précédemment définis

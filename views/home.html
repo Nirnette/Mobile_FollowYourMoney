@@ -36,7 +36,7 @@
 							<tr ng-repeat="row in home.body | orderBy : selectedProp : isReversed | filter:customFilter">
 								<td>{{row.date | date:'dd/MM'}}</td>
 								<td ng-click="home.showModal($event,row.id)" class="modalLink">
-									<i class="fa {{catIcons[row.category]}}" aria-hidden="true"></i> {{row.name | uppercase}}
+									<i class="fa {{catIcons[row.category]}}" aria-hidden="true"></i> {{row.name}}
 								</td>
 								<td>{{row.cost}} €</td>
 								<td ng-hide="true">{{row.category}}</td>
