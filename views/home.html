@@ -24,18 +24,19 @@
 						<thead>
 							<tr>
 								<th 
-									ng-repeat="(i,th) in home.head " 
-									class="label-cell sortable-cell sortable-active " 
-									ng-click="changeOrder('home.head')" >
+		                           ng-repeat="(i,th) in home.head "
+		                           ng-class="classHeader(th)"
+		                           ng-click="changeOrder(th)" >
 									{{th}}
 								</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr ng-repeat="row in filtreCategorie = (home.body | filter:customFilter)">
+						<!-- row in filtreCategorie = (home.body | filter:customFilter) -->
+							<tr ng-repeat="row in home.body | orderBy : selectedProp : isReversed | filter:customFilter">
 								<td>{{row.date | date:'dd/MM'}}</td>
 								<td ng-click="home.showModal($event,row.id)" class="modalLink">
-									<i class="fa {{catIcons[row.category]}}" aria-hidden="true"></i> {{row.name}}
+									<i class="fa {{catIcons[row.category]}}" aria-hidden="true"></i> {{row.name | uppercase}}
 								</td>
 								<td>{{row.cost}} €</td>
 								<td ng-hide="true">{{row.category}}</td>

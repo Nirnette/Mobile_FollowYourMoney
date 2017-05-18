@@ -1,6 +1,6 @@
 /*********************** Controller de la home page ****************/
 
-app.controller('HomeCtrl',function($scope,$compile,CategoriesService, NotificationFactory, UserFactory, LocalStorageFactory){
+app.controller('HomeCtrl',function($state,$scope,CategoriesService, NotificationFactory, UserFactory, LocalStorageFactory){
 
 	//Stockage du this
 	var home  = this;
@@ -17,7 +17,6 @@ app.controller('HomeCtrl',function($scope,$compile,CategoriesService, Notificati
 	$scope.user 		   = UserFactory.getUser();
 	$scope.categories      = CategoriesService.categories;
 	$scope.catIcons        = CategoriesService.icons;
-	$scope.categoryFilter  = "";
 
 	var storagedDatas = LocalStorageFactory.getItem('followyourmoney');
 
@@ -79,7 +78,7 @@ app.controller('HomeCtrl',function($scope,$compile,CategoriesService, Notificati
 			    {
 			        text: 'Edit',
 			        onClick: function() {
-			          myApp.alert('You clicked second button!')
+			        	$state.go("form", {'expense' : expense});
 			        }
 			    },
 			    {
@@ -95,7 +94,7 @@ app.controller('HomeCtrl',function($scope,$compile,CategoriesService, Notificati
     $scope.isReversed = true; 
 
     $scope.changeOrder = function(prop) {
-        $scope.selectedProp = prop;
+        $scope.selectedProp = prop.toLowerCase();
         $scope.isReversed = !$scope.isReversed;
     };
 
@@ -114,5 +113,28 @@ app.controller('HomeCtrl',function($scope,$compile,CategoriesService, Notificati
         } else {
             return true;
         }
+    };
+
+    $scope.classHeader = function(element){
+
+        var cldefault = $scope.selectedProp;
+        var elem_entre = element.toLowerCase();
+
+        if(elem_entre == cldefault){
+
+            retourClass="label-cell sortable-cell sortable-active";
+
+            if($scope.isReversed === true){
+                retourClass += " sortable-asc";
+         }else{
+                retourClass += " sortable-desc";
+         }
+
+        }else{
+               retourClass="label-cell sortable-cell";
+        }
+
+        return retourClass;
+
     };
 });
