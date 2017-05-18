@@ -56,10 +56,28 @@ input, textarea, select{
 	color:#167f6a;
 }
 
-
 .is-invisible {
 	opacity: 0;
+}
 
 .deleteLabel{
+	color:#D91E18;
+}
 
+.modal-buttons-3 span:nth-child(1){
+	background-color: #D91E18;
+	border:1px solid #D91E18;
+	color:#fff;
+}
+
+.modal-buttons-3 span:nth-child(2){
+	background-color: #446CB3;
+	border:1px solid #446CB3;
+	color:#fff;
+}
+
+.modal-buttons-3 span:nth-child(3){
+	background-color: #333333;
+	border:1px solid #333333;
+	color:#fff;
 }

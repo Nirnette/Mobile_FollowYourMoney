@@ -7,7 +7,7 @@
 				<div class="col-15"></div>
 
 				<div class="col-70">
-					<p>Filter by Categories :
+					<p>Filter by Category :
 						<select name="categoryFilter" ng-model="modelCategory" >
 							<option value="all"></option>
 							<option ng-repeat="categorie in categories" value="{{categorie}}" >{{categorie}}</option>
@@ -34,7 +34,7 @@
 						<tbody>
 						<!-- row in filtreCategorie = (home.body | filter:customFilter) -->
 							<tr ng-repeat="row in home.body | orderBy : selectedProp : isReversed | filter:customFilter">
-								<td>{{row.date | date:'dd/MM'}}</td>
+								<td>{{row.date | date:'dd/MM/yy'}}</td>
 								<td ng-click="home.showModal($event,row.id)" class="modalLink">
 									<i class="fa {{catIcons[row.category]}}" aria-hidden="true"></i> {{row.name}}
 								</td>

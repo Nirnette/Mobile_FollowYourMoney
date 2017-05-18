@@ -10,7 +10,7 @@ app.controller('NavCtrl', function($scope,UserFactory) {
             $scope.user = UserFactory.getUser();
         }
         else{
-            $scope.$apply()
+            $scope.$apply();
             clearInterval(intrv);
         }
     },300);

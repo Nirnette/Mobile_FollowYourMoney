@@ -7,35 +7,39 @@ app.controller('FormCtrl',function($http,$state, $stateParams,$scope,CategoriesS
 	var myApp = new Framework7();
 
 	var editDatas = $stateParams.expense;
-	console.log("edit datas : ",editDatas);
-
+	
 	form.categories = CategoriesService.categories;
 
 	var dateEdit = null;
 
-	if(editDatas !== undefined){
-		var d = editDatas.date.split('-');
-		var dateEdit = new Date(d[0], d[1], d[2]);
-		console.log(dateEdit);
+	if(editDatas !== null){
+
+		form.submitButton = "Edit";
+		form.title 		  = "Edit";
+
+		var dateEdit = editDatas.date;
+
+		if(typeof editDatas.date == 'string'){
+			var d = editDatas.date.split('-');
+			var dateEdit = new Date(d[0], d[1]-1, d[2]);
+		}
+	}else{
+		form.submitButton = "Save";
+		form.title 		  = "New";
 	}
 
-	form.name 	        = editDatas !== undefined ? editDatas.name : '';
-	form.category       = editDatas !== undefined ? editDatas.category : '';
-	form.date           = editDatas !== undefined ? editDatas.date : new Date();
-	form.cost           = editDatas !== undefined ? editDatas.cost : '';
-	form.location       = editDatas !== undefined ? editDatas.location : '';
-	form.comment        = editDatas !== undefined ? editDatas.comment : '';
+	form.name 	        = editDatas !== null ? editDatas.name : '';
+	form.category       = editDatas !== null ? editDatas.category : '';
+	form.date           = editDatas !== null ? dateEdit : new Date();
+	form.cost           = editDatas !== null ? editDatas.cost : '';
+	form.location       = editDatas !== null ? editDatas.location : '';
+	form.comment        = editDatas !== null ? editDatas.comment : '';
 
-	form.name 	        = '';
-	form.category       = '';
-	form.date           = new Date();
-	form.cost           = '';
-	form.location       = '';
-	form.comment        = '';
-
-	LocationFactory.getTown().then(function(location) {
-		form.location = location
-    });
+	if(editDatas == null){
+		LocationFactory.getTown().then(function(location) {
+			form.location = location
+	    });
+	}
 
 	 //Envoyer un message au chat
 	form.submit = function(){
@@ -50,29 +54,61 @@ app.controller('FormCtrl',function($http,$state, $stateParams,$scope,CategoriesS
 			day = day < 10 ? '0'+day : day;
 
 			var date = form.date.getFullYear()+'-'+month+'-'+day;
-			
-			var newExpense = {
-				id           : new Date().getTime(),
-				name         : form.name,
-				category     : form.category,
-				date 	     : date,
-				cost         : form.cost,
-				location     : form.location,
-				comment      : form.comment,
-			};
 
 			var storagedDatas = LocalStorageFactory.getItem('followyourmoney');
+			var contexte = "added";
+
+			//Edition
+			if(editDatas !== null && editDatas.id !== undefined){
+
+				contexte = "edited";
+
+				var idx = null;
+				for(index in storagedDatas.datas){
+					if(storagedDatas.datas[index].id == editDatas.id){
+						idx = index;
+						break;
+					}
+				}
+
+				if(idx !== null){
+					storagedDatas.datas[idx].name     	= form.name;
+					storagedDatas.datas[idx].category 	= form.category;
+					storagedDatas.datas[idx].date 		= date;
+					storagedDatas.datas[idx].cost 		= form.cost;
+					storagedDatas.datas[idx].location 	= form.location;
+					storagedDatas.datas[idx].comment 	= form.comment;
+				}
+			}
+			//Création
+			else{
+
+				var newExpense = {
+					id           : new Date().getTime(),
+					name         : form.name,
+					category     : form.category,
+					date 	     : date,
+					cost         : form.cost,
+					location     : form.location,
+					comment      : form.comment,
+				};
+
+			}
 
 			if(storagedDatas.userdata !== undefined && storagedDatas.datas !== undefined){
-				storagedDatas.datas.push(newExpense);
+
+				//Edition
+				if(editDatas == null){
+					storagedDatas.datas.push(newExpense);
+				}
 
 				LocalStorageFactory.setItem('followyourmoney',storagedDatas);
 
-				var storagedDatas2 = LocalStorageFactory.getItem('followyourmoney');
-
-				myApp.alert('Expense added !',"Success");
+				myApp.alert('Expense '+contexte+' !',"Success");
 
 				$state.go('home');
+			}else{
+				myApp.alert("Error while saving the expense",'Error');
 			}
 		}else{
 

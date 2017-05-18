@@ -73,17 +73,16 @@ app.controller('HomeCtrl',function($state,$scope,CategoriesService, Notification
 			            	}
 
 					    });
-			        }
+			        },
 			    },
 			    {
 			        text: 'Edit',
 			        onClick: function() {
 			        	$state.go("form", {'expense' : expense});
-			        }
+			        },
 			    },
 			    {
 			        text: 'Close',
-			        bold: true,
 			    },
 		    ]
 		});
