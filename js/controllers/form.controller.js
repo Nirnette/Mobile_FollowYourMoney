@@ -50,10 +50,7 @@ app.controller('FormCtrl',function($http,$state, $stateParams,$scope,CategoriesS
 			day = day < 10 ? '0'+day : day;
 
 			var date = form.date.getFullYear()+'-'+month+'-'+day;
-
-			console.log("DATE SUBMIT : ",form.date);
-			console.log("dateee : ",date);
-
+			
 			var newExpense = {
 				id           : new Date().getTime(),
 				name         : form.name,
