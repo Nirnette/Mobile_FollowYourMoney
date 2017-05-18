@@ -51,3 +51,7 @@ input, textarea, select{
 .modalLink:hover{
 	color:#16a085;
 }
+
+.costLabel{
+	color:#167f6a;
+}
