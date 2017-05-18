@@ -3,7 +3,7 @@
 	 <div class="page">
 		<div class="page-content">
 
-			<div class="content-block-title">New Expense</div>
+			<div class="content-block-title">{{form.title}} Expense</div>
 			<div class="list-block inset">
 				<form novalidate ng-submit="form.submit()">
 					<ul>
@@ -75,7 +75,7 @@
 						</li>
 					</ul>
 					<div class="buttons-row">
-						<button type="submit" ng-submit="" class="button button-raised button-fill color-blue">Save</button>
+						<button type="submit" class="button button-raised button-fill color-blue" ng-model="form.submitButton">{{form.submitButton}}</button>
 					</div>			
 				</form>
 			</div>
