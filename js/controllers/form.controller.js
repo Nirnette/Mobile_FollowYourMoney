@@ -112,7 +112,7 @@ app.controller('FormCtrl',function($http,$state, $stateParams,$scope,CategoriesS
 			}
 		}else{
 
-			if(form.name== undefined || form.name.lenght == 0){
+			if(form.name == undefined || form.name.length == 0){
 				$('#name').addClass('error');
 				$('#name_label').addClass('error-label');
 			}else{
