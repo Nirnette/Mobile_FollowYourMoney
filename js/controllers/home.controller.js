@@ -9,7 +9,7 @@ app.controller('HomeCtrl',function($scope, CategoriesService, NotificationFactor
     home.head = {
 		date      : "Date",
 		name      : "Expense",
-		montant   : "Cost"
+		montant   : "Cost",
 	};
 
 	$scope.user 		= UserFactory.getUser();
