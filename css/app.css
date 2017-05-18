@@ -56,6 +56,10 @@ input, textarea, select{
 	color:#167f6a;
 }
 
+
 .is-invisible {
 	opacity: 0;
+
+.deleteLabel{
+
 }
