@@ -1,14 +1,17 @@
 /*********************** Controller de la page de formulaire ****************/
 
-app.controller('FormCtrl',function($http,$state,$scope,CategoriesService,LocalStorageFactory,LocationFactory){
+app.controller('FormCtrl',function($http,$state, $stateParams,$scope,CategoriesService,LocalStorageFactory,LocationFactory){
 
 	//Stockage du this
 	var form = this;
 	var myApp = new Framework7();
 
+	var editDatas = $stateParams.expense;
+	console.log("edit datas : ",editDatas);
+
 	form.categories = CategoriesService.categories;
 
-	form.name 	        = '';
+	form.name 	        = editDatas !== undefined ? editDatas.name : '';
 	form.category       = '';
 	form.date           = new Date();
 	form.cost           = '';
