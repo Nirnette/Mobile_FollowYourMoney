@@ -31,16 +31,21 @@ app.controller('HomeCtrl',function($scope, CategoriesService, NotificationFactor
 		console.log(expense);
 
 		if(expense !== undefined){
-			var html =  "<b>Cost</b> : "+expense.cost+' €<br>';
+
+			var date = expense.date.split('-').reverse().join('/');
+			var html =  "<b>Cost</b> : <span class='costLabel'>"+expense.cost+' €</span><br>';
 			html += "<b>Done at</b> : "+expense.location+'<br>';
-			html += "<b>On</b> : "+expense.date+'<br>';
+			html += "<b>On</b> : "+date+'<br>';
 			html += "<b>Category</b> : "+expense.category+'<br>';
 
 			if(expense.comment.length > 0)
 				html += "<b>Comment</b> : "+expense.comment;
 		}
-		myApp.alert(html,expense.name);
-	};
+
+		var nameModal = '<i class="fa '+$scope.catIcons[expense.category]+'" aria-hidden="true"></i>  '+expense.name;
+		
+		myApp.alert(html,nameModal);
+	};1
 
     $scope.selectedProp = 'date';/* utilise pour le trie*/
     $scope.isReversed = true; /* utilise pour le trie*/

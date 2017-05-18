@@ -14,7 +14,7 @@ app.service('CategoriesService', function(){
 
     this.icons = {
     	'Grocery'      :'fa-shopping-cart',
-    	'Shopping'     :'fa-shopping-bag',
+    	'Shopping'     :'fa-credit-card-alt',
     	'Restoration'  :'fa-cutlery',
     	'Outings'      :'fa-users',
     	'Holidays'     :'fa-plane',
