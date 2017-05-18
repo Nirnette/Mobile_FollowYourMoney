@@ -1,6 +1,6 @@
 <!-- ********************** HOME PAGE ************************-->
 <div>
-	
+
 	<div class="page">
 		<div class="page-content">
 			<!--Listes des dépenses à insérer ici-->
@@ -9,35 +9,33 @@
 				<div class="col-15"></div>
 
 				<div class="col-70">
-					<!---->
-					<p>Filtre par Categories :
-						<select name="category" ng-model="modelCategory" >
-							<option value="all"></option>
-							<option ng-repeat="categorie in categories" value="{{categorie}}" >{{categorie}}</option>
-						</select>
-					</p>
+							<p>Filtre par Categories :
+								<select name="category" ng-model="modelCategory" >
+									<option value="all">All</option>
+									<option ng-repeat="categorie in categories" value="{{categorie}}" >{{categorie}}</option>
+								</select>
+							</p>
 				</div>
 				<div class="col-15"></div>
 			</div>
 
 
-			<div class="data-table data-table-init card">
+			<div class="data-table data-table-init ">
 				<div class="data-table-title">Liste des depenses</div>
 				<div class="data-table">
 					<table>
 						<thead>
 							<tr>
-								<!--<th ng-repeat="(i,th) in home" ng-class="selectedCls(i)" ng-click="changeSorting(i)">{{th}}</th>-->
-								<th ng-repeat="(i,th) in home.head " class="label-cell sortable-cell sortable-active " ng-click="changeOrder('home.head')" >{{th}}</th>
+								<th ng-repeat="(i,th) in home.head " ng-click="changeOrder(home.head)" >{{th}}</th>
 							</tr>
 						</thead>
 						<tbody>
-							<!--<tr ng:repeat="row in body.$orderBy(sort.column, sort.descending)">-->
-							<tr ng-repeat="row in filtreCategorie = (home.body | filter:customFilter )">
+
+							<tr ng-repeat="row in filtreCategorie = (home.body | filter:customFilter ) | orderBy:selectedProp:isReversed">
 								<td>{{row.date}}</td>
 								<td>{{row.name}}</td>
-								<td>{{row.montant}}</td>
-								<td>{{row.categorie}}</td>
+								<td>{{row.cost}}</td>
+								<td>{{row.category}}</td>
 							</tr>
 						</tbody>
 					</table>
