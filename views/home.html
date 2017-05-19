@@ -9,8 +9,16 @@
 				<div class="col-70">
 					<p>Filter by Category :
 						<select name="categoryFilter" ng-model="modelCategory" >
-							<option value="all"></option>
+							<option value="all">All</option>
 							<option ng-repeat="categorie in categories" value="{{categorie}}" >{{categorie}}</option>
+						</select>
+
+						Filter by Date :
+						<select name="dateFilter" ng-model="modelDate" >
+							<option value="all">All</option>
+							<option value="today">Today</option>
+							<option value="thisweek">This week</option>
+							<option value="thismonth">This month</option>
 						</select>
 					</p>
 				</div>
@@ -33,7 +41,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr ng-repeat="row in home.body | orderBy : selectedProp : isReversed | filter:customFilter">
+							<tr ng-repeat="row in home.body | orderBy : selectedProp : isReversed | filter:customFilter | filter:customDateFilter">
 								<td>{{row.date | date:'dd/MM/yy'}}</td>
 								<td ng-click="home.showModal($event,row.id)" class="modalLink">
 									<i class="fa {{catIcons[row.category]}}" aria-hidden="true"></i> {{row.name}}
