@@ -26,13 +26,13 @@
 								<th 
 		                           ng-repeat="(i,th) in home.head "
 		                           ng-class="classHeader(th)"
-		                           ng-click="changeOrder(th)" >
+		                           ng-click="changeOrder(th)"
+		                        >
 									{{th}}
 								</th>
 							</tr>
 						</thead>
 						<tbody>
-						<!-- row in filtreCategorie = (home.body | filter:customFilter) -->
 							<tr ng-repeat="row in home.body | orderBy : selectedProp : isReversed | filter:customFilter">
 								<td>{{row.date | date:'dd/MM/yy'}}</td>
 								<td ng-click="home.showModal($event,row.id)" class="modalLink">

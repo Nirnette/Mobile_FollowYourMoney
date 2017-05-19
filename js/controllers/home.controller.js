@@ -93,8 +93,11 @@ app.controller('HomeCtrl',function($state,$scope,CategoriesService, Notification
     $scope.isReversed = true; 
 
     $scope.changeOrder = function(prop) {
-        $scope.selectedProp = prop.toLowerCase();
-        console.log($scope.isReversed);
+    	if(prop == 'Expense'){
+    		$scope.selectedProp = 'name';
+    	}else{
+        	$scope.selectedProp = prop.toLowerCase();
+    	}
         $scope.isReversed = !$scope.isReversed;
     };
 
@@ -120,19 +123,20 @@ app.controller('HomeCtrl',function($state,$scope,CategoriesService, Notification
         var cldefault = $scope.selectedProp;
         var elem_entre = element.toLowerCase();
 
-        if(elem_entre == cldefault){
+        if((elem_entre == 'expense' && cldefault == 'name') || (elem_entre == cldefault)){
 
             retourClass="label-cell sortable-cell sortable-active";
 
             if($scope.isReversed === true){
                 retourClass += " sortable-asc";
-         }else{
-                retourClass += " sortable-desc";
-         }
+	        }else{
+	        	retourClass += " sortable-desc";
+	        }
 
         }else{
-               retourClass="label-cell sortable-cell";
+            retourClass="label-cell sortable-cell";
         }
+
 
         return retourClass;
 
