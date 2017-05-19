@@ -118,6 +118,82 @@ app.controller('HomeCtrl',function($state,$scope,CategoriesService, UserFactory,
         }
     };
 
+    $scope.customDateFilter = function(element) {
+
+        var valFilter = ($scope.modelDate) ? $scope.modelDate : 'all';
+
+        if (valFilter != "all") {
+        	var date = element.date;
+
+        	var dateElem = element.date;
+        	if(typeof dateElem == 'string'){
+				var d = dateElem.split('-');
+				var dateElem = new Date(d[0], d[1]-1, d[2]);
+			}
+
+			var dateToCompare = null;
+
+			switch(valFilter) {
+			    case 'today':
+			        dateToCompare = new Date();
+
+			        if(dateToCompare.getFullYear() == dateElem.getFullYear() && 
+			           dateToCompare.getMonth() == dateElem.getMonth() &&
+			           dateToCompare.getDate() == dateElem.getDate()
+			       	){
+			        	return true;
+			       	}else{
+			       		return false;
+			       	}
+
+			        break;
+			    case 'thisweek':
+			    	dateToCompare = new Date();
+
+			    	dateElem.setHours(00,00);
+
+			    	var curr_date = new Date();
+			    	curr_date.setHours(00,00);
+                 
+			        var day = curr_date.getDay();
+			                 
+			        var diff = curr_date.getDate() - day + (day == 0 ? -6:1); 
+			        var week_start_tstmp = curr_date.setDate(diff-1);           
+
+			        var week_start = new Date(week_start_tstmp);
+			        week_start.setHours(00,00);         
+			        var week_end  = new Date(week_start_tstmp); 
+			                 
+			        week_end = new Date (week_end.setDate(week_end.getDate() + 7));
+			        week_end.setHours(00,00);             
+
+			        if(dateElem.getTime() >= week_start.getTime() && dateElem.getTime() <= week_end.getTime()){
+			        	return true;
+			       	}else{
+			       		return false;
+			       	}
+			        
+			        break;
+			    case 'thismonth':
+			    	dateToCompare = new Date();
+
+			    	if(dateToCompare.getFullYear() == dateElem.getFullYear() && 
+			           dateToCompare.getMonth() == dateElem.getMonth() 
+			       	){
+			        	return true;
+			       	}else{
+			       		return false;
+			       	}
+			    	break;
+			    default:
+			    	return true;
+			}
+
+        } else {
+            return true;
+        }
+    };
+
     $scope.classHeader = function(element){
 
         var cldefault = $scope.selectedProp;
