@@ -83,5 +83,9 @@ input, textarea, select{
 }
 
 .row-bottom{
-	margin-bottom:2%;
+	margin-bottom:5%;
+}
+.row-top{
+	margin-top:1%;
+	margin-bottom:1%;
 }
