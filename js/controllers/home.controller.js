@@ -1,6 +1,6 @@
 /*********************** Controller de la home page ****************/
 
-app.controller('HomeCtrl',function($state,$scope,CategoriesService, NotificationFactory, UserFactory, LocalStorageFactory){
+app.controller('HomeCtrl',function($state,$scope,CategoriesService, UserFactory, LocalStorageFactory){
 
 	//Stockage du this
 	var home  = this;
